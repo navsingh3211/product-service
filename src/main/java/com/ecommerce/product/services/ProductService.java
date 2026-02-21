@@ -74,6 +74,6 @@ public class ProductService {
     }
 
     public Optional<ProductResponse> getproductbyid(Long id) {
-        return productRepository.findById(id).map(this::mapToProductResponse);
+        return productRepository.findByIdAndActiveTrue(id).map(this::mapToProductResponse);
     }
 }
