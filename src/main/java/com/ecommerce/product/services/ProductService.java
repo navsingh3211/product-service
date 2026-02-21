@@ -5,6 +5,7 @@ import com.ecommerce.product.dto.ProductResponse;
 import com.ecommerce.product.models.Product;
 import com.ecommerce.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -70,5 +71,9 @@ public class ProductService {
         return productRepository.searchProducts(keyword).stream()
                 .map(this::mapToProductResponse)
                 .collect(Collectors.toList());
+    }
+
+    public Optional<ProductResponse> getproductbyid(Long id) {
+        return productRepository.findById(id).map(this::mapToProductResponse);
     }
 }
